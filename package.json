@@ -1,0 +1,23 @@
+{
+  "name": "@toopo/spec",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.5.1",
+  "exports": {
+    "./address": "./src/address.ts"
+  },
+  "scripts": {
+    "check": "biome ci && tsc && vitest run && knip"
+  },
+  "knip": {
+    "entry": [
+      ".claude/hook.mjs"
+    ]
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.14",
+    "knip": "6.37.0",
+    "typescript": "7.0.2",
+    "vitest": "5.0.1"
+  }
+}
