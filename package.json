@@ -4,7 +4,8 @@
   "type": "module",
   "packageManager": "pnpm@12.5.1",
   "exports": {
-    "./address": "./src/address.ts"
+    "./address": "./src/address.ts",
+    "./names": "./src/names.ts"
   },
   "scripts": {
     "check": "biome ci && tsc && vitest run && knip"

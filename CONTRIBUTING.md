@@ -4,8 +4,10 @@ Every catalogue depends on what this repository says, so it changes rarely and o
 
 - **A new domain** is welcome when a function fits none of the existing ones. Open an issue first,
   naming the function.
-- **Renaming or removing a domain** is not accepted: it breaks addresses already written into other
-  projects.
+- **A new name** is claimed with one line in `src/names.ts`: `domain/name` and one sentence naming
+  the concept.
+- **Renaming or removing a domain or a name** is not accepted: it breaks addresses already written
+  into other projects.
 
 ## Before a pull request
 
