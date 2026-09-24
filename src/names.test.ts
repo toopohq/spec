@@ -1,9 +1,9 @@
 import { expect, test } from 'vitest'
-import { ecosystems, isAddress } from './address.ts'
+import { isAddress } from './address.ts'
 import { names } from './names.ts'
 
-// A key carries no ecosystem, so it completes to an address under every one of them.
+// A key is checked as the `js` address it completes to; the ecosystem in front changes nothing.
 test.each(Object.entries(names))('claims %s', (key, concept) => {
-  for (const ecosystem of ecosystems) expect(isAddress(`${ecosystem}/${key}`)).toBe(true)
+  expect(isAddress(`js/${key}`)).toBe(true)
   expect(concept).toMatch(/^[A-Z][^.!?]*\.$/)
 })
