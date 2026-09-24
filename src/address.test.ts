@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest'
 import { isAddress } from './address.ts'
+import { domains } from './domains.ts'
 
 const accepted = {
   'a plain name': 'js/string/truncate',
@@ -30,6 +31,10 @@ const refused = {
 
 test.each(Object.entries(accepted))('accepts %s', (_, text) => {
   expect(isAddress(text)).toBe(true)
+})
+
+test.each(domains)('accepts the domain %s', (domain) => {
+  expect(isAddress(`js/${domain}/x`)).toBe(true)
 })
 
 test.each(Object.entries(refused))('refuses %s', (_, text) => {
