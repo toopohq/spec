@@ -5,9 +5,10 @@ export type ServedRecord = {
   summary: string
   // A type-only function emits `.ts` alone.
   emissions: { ts: Emission; js?: Emission }
-  // Empty until a function imports another; the shape of an entry is decided then.
+  // Empty until a function imports another; a client refuses a record where it is not.
   dependencies: []
 }
 
-// `path` from the registry's root; `sha256` of the served file, which the client verifies.
+// `path` from the registry's root; `sha256` in lowercase hex over the served file's bytes, which
+// the client verifies.
 type Emission = { path: string; sha256: string }

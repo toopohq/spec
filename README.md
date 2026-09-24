@@ -11,3 +11,6 @@ case it accepts or refuses.
 
 A name means one concept in every ecosystem. [`src/names.ts`](src/names.ts) claims each one, from
 `domain/name` to one sentence, and a catalogue publishes only the names claimed there.
+
+What the registry serves at an address is typed in [`src/record.ts`](src/record.ts): the version,
+a summary, and each emission's path and digest. A catalogue writes it and the client reads it.
