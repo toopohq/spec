@@ -12,7 +12,8 @@ registry. The catalogues and the client are checked against it; it depends on no
 - `src/names.ts` — the name registry: `domain/name`, ecosystem-free, to the one concept it means.
 - `src/names.test.ts` — the guard: every key is a valid address once an ecosystem precedes it, and
   every concept is one sentence.
-- `.claude/hook.mjs` — refuses a root entry outside its allowlist and a `CLAUDE.md` past 150 lines;
+- `.claude/hook.mjs` — fast feedback for Claude Code, not enforcement: it sees Write and Edit, and
+  a shell bypasses it. Refuses a root entry outside its allowlist and a `CLAUDE.md` past 150 lines;
   formats and lints every file written.
 - `DECISIONS.md` — one line per decision. Read it before changing the grammar.
 

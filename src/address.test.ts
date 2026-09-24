@@ -33,12 +33,10 @@ test.each(Object.entries(accepted))('accepts %s', (_, text) => {
   expect(isAddress(text)).toBe(true)
 })
 
-test.each(ecosystems)('accepts the ecosystem %s', (ecosystem) => {
-  expect(isAddress(`${ecosystem}/string/x`)).toBe(true)
-})
-
-test.each(domains)('accepts the domain %s', (domain) => {
-  expect(isAddress(`js/${domain}/x`)).toBe(true)
+// The grammar is built from these lists, so an entry is checked where the segment rule is spelled
+// out: the name.
+test.each([...ecosystems, ...domains])('%s is a lowercase kebab-case segment', (segment) => {
+  expect(isAddress(`js/string/${segment}`)).toBe(true)
 })
 
 test.each(Object.entries(refused))('refuses %s', (_, text) => {
