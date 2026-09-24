@@ -5,7 +5,8 @@
   "packageManager": "pnpm@12.5.1",
   "exports": {
     "./address": "./src/address.ts",
-    "./names": "./src/names.ts"
+    "./names": "./src/names.ts",
+    "./record": "./src/record.ts"
   },
   "scripts": {
     "check": "biome ci --error-on-warnings && tsc && vitest run && knip"
