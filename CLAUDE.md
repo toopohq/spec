@@ -1,7 +1,8 @@
 # spec
 
-The shared vocabulary of the Toopo catalogues: the address grammar, the domain list and the name
-registry. The catalogues and the client are checked against it; it depends on none of them.
+The shared vocabulary of the Toopo catalogues: the address grammar, the domain list, the name
+registry and the record the registry serves. The catalogues and the client are checked against it;
+it depends on none of them.
 
 ## Structure
 
@@ -12,6 +13,8 @@ registry. The catalogues and the client are checked against it; it depends on no
 - `src/names.ts` — the name registry: `domain/name`, ecosystem-free, to the one concept it means.
 - `src/names.test.ts` — the guard: every key is a valid address once an ecosystem precedes it, and
   every concept is one sentence.
+- `src/record.ts` — `ServedRecord`: what the registry serves at an address. A type alone, so
+  a client imports it with `import type`, which Node strips.
 - `.claude/hook.mjs` — fast feedback for Claude Code, not enforcement: it sees Write and Edit, and
   a shell bypasses it. Refuses a root entry outside its allowlist and a `CLAUDE.md` past 150 lines;
   formats and lints every file written.
