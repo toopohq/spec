@@ -12,3 +12,4 @@ One line per decision, newest last.
 - 2026-09-23 — Copyright is held by "The Toopo contributors"; every commit is signed off under the DCO, checked by CI.
 - 2026-09-23 — The name registry maps `domain/name` to one sentence naming the concept. A key carries no ecosystem: a name means one concept in all of them. The guard checks a key as the `js` address it completes to.
 - 2026-09-23 — A concept sentence says what a function does, never how: units, edge cases and output format belong to each catalogue's case table.
+- 2026-09-24 — Nothing leaves `domains` or `names`: a pull request step compares their keys on the base and on the merge, and refuses a removal. A rename is a removal. A concept sentence may still be reworded.

@@ -23,8 +23,16 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
+      - name: Nothing removed from the domains or the names
+        if: ${{ !cancelled() && github.event_name == 'pull_request' }}
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          keys() { git show "$1:src/domains.ts" "$1:src/names.ts" | grep -oE "^  '[a-z0-9/-]+'" | tr -d " '" | sort -u; }
+          gone=$(comm -23 <(keys "$BASE") <(keys HEAD) | xargs)
+          [ -z "$gone" ] || { echo "::error::Removed: $gone"; exit 1; }
       - name: Title, sign-off, no assistant attribution
-        if: github.event_name == 'pull_request'
+        if: ${{ !cancelled() && github.event_name == 'pull_request' }}
         env:
           TITLE: ${{ github.event.pull_request.title }}
           BODY: ${{ github.event.pull_request.body }}
