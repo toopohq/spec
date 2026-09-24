@@ -5,7 +5,8 @@ registry. The catalogues and the client are checked against it; it depends on no
 
 ## Structure
 
-- `src/address.ts` — `isAddress`: `ecosystem/domain/name`, every segment lowercase kebab-case.
+- `src/address.ts` — `ecosystems`, and `isAddress`: `ecosystem/domain/name`, every segment lowercase
+  kebab-case.
 - `src/domains.ts` — the domains an address may name.
 - `src/address.test.ts` — the named case table. Each case says why it is accepted or refused.
 - `src/names.ts` — the name registry: `domain/name`, ecosystem-free, to the one concept it means.

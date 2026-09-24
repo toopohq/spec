@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { isAddress } from './address.ts'
+import { ecosystems, isAddress } from './address.ts'
 import { domains } from './domains.ts'
 
 const accepted = {
@@ -12,7 +12,7 @@ const accepted = {
 const refused = {
   'the empty string': '',
   'the short form, which the client completes': 'string/truncate',
-  'a file extension in place of the ecosystem': 'ts/string/truncate',
+  'an ecosystem the registry does not serve': 'ts/string/truncate',
   'an unknown domain': 'js/strings/truncate',
   'no name': 'js/string',
   'an empty name': 'js/string/',
@@ -31,6 +31,10 @@ const refused = {
 
 test.each(Object.entries(accepted))('accepts %s', (_, text) => {
   expect(isAddress(text)).toBe(true)
+})
+
+test.each(ecosystems)('accepts the ecosystem %s', (ecosystem) => {
+  expect(isAddress(`${ecosystem}/string/x`)).toBe(true)
 })
 
 test.each(domains)('accepts the domain %s', (domain) => {
