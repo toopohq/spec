@@ -8,7 +8,7 @@
     "./names": "./src/names.ts"
   },
   "scripts": {
-    "check": "biome ci && tsc && vitest run && knip"
+    "check": "biome ci --error-on-warnings && tsc && vitest run && knip"
   },
   "knip": {
     "entry": [
