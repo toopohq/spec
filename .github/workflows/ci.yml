@@ -23,6 +23,27 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
+      - name: Nothing removed from the domains or the names
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git show "$BASE:src/domains.ts" > "$RUNNER_TEMP/domains.mts"
+          git show "$BASE:src/names.ts" > "$RUNNER_TEMP/names.mts"
+          node --input-type=module -e '
+            const keys = async (domains, names) => [
+              ...(await import(domains)).domains,
+              ...Object.keys((await import(names)).names),
+            ]
+            const now = new Set(await keys("./src/domains.ts", "./src/names.ts"))
+            const base = process.env.RUNNER_TEMP
+            const was = await keys(`${base}/domains.mts`, `${base}/names.mts`)
+            const gone = was.filter((key) => !now.has(key))
+            if (gone.length) {
+              console.log(`::error::Removed from main: ${gone.join(", ")}`)
+              process.exit(1)
+            }
+          '
       - name: Title, sign-off, no assistant attribution
         if: github.event_name == 'pull_request'
         env:

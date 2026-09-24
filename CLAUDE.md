@@ -24,7 +24,8 @@ registry. The catalogues and the client are checked against it; it depends on no
 
 - Zero runtime dependencies.
 - Lowercase addresses: a name becomes a folder, and Windows and macOS file systems ignore case.
-- A domain or a name is never renamed or removed. Adding one is free.
+- A domain or a name is never renamed or removed; CI refuses a pull request that does. Adding one
+  is free.
 - A source file is at most 150 lines, a function at most 40. Biome enforces both.
 - A pull request title is a Conventional Commit, every commit is signed off (DCO), and no title,
   body or commit carries assistant attribution. CI refuses otherwise.
