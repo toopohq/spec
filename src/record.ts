@@ -3,6 +3,8 @@ export type ServedRecord = {
   address: string
   version: string
   summary: string
+  // What the delivered file exports, in source order: the client prints the line importing them.
+  exports: string[]
   // A type-only function emits `.ts` alone.
   emissions: { ts: Emission; js?: Emission }
   // Empty until a function imports another; a client refuses a record where it is not.
