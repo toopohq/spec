@@ -9,12 +9,7 @@
     "./record": "./src/record.ts"
   },
   "scripts": {
-    "check": "biome ci --error-on-warnings && tsc && vitest run && knip"
-  },
-  "knip": {
-    "entry": [
-      ".claude/hook.mjs"
-    ]
+    "check": "node .claude/hook.mjs --all && biome ci --error-on-warnings && tsc && vitest run && knip"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.14",

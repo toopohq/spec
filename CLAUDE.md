@@ -15,19 +15,20 @@ it depends on none of them.
   every concept is one sentence.
 - `src/record.ts` — `ServedRecord`: what the registry serves at an address. A type alone, so
   a client imports it with `import type`, which Node strips.
-- `.claude/hook.mjs` — fast feedback for Claude Code, not enforcement: it sees Write and Edit, and
-  a shell bypasses it. Refuses a root entry outside its allowlist and a `CLAUDE.md` past 150 lines;
-  formats and lints every file written.
+- `.claude/hook.mjs` — refuses a root entry outside its allowlist, any `CLAUDE.md` past 150 lines
+  and a `dependencies` field; formats and lints every file written. It sees Write and Edit, and a
+  shell bypasses it, so `--all` refuses the same over every file git lists.
 - `DECISIONS.md` — one line per decision. Read it before changing the grammar.
 
 ## Commands
 
 - `pnpm install`
-- `pnpm check` — Biome, `tsc`, Vitest, knip. CI runs the same, plus the pull request checks.
+- `pnpm check` — the hook's `--all`, Biome, `tsc`, Vitest, knip. CI runs the same, plus the pull
+  request checks.
 
 ## Non-negotiables
 
-- Zero runtime dependencies.
+- Zero runtime dependencies: `pnpm check` refuses a `dependencies` field.
 - Lowercase addresses: a name becomes a folder, and Windows and macOS file systems ignore case.
 - A domain or a name is never renamed or removed; CI refuses a pull request that does. Adding one
   is free.
